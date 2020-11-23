@@ -10,8 +10,12 @@ public class ImmutableArrayList {
         this.lenght = 0;
     }
     public ImmutableArrayList(Object[] c){
-        this.data = c;
         this.lenght = c.length;
+        this.data = new Object[this.lenght];
+        for (int i = 0; i < this.lenght; i++){
+            this.data[i] = c[i];
+        }
+
     }
     ImmutableArrayList add(Object e){
         int len = this.lenght;
