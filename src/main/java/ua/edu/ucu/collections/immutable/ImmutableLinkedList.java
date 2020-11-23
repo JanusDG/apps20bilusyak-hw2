@@ -166,7 +166,7 @@ public class ImmutableLinkedList{
     } //перетворює колекцію до масиву обєктів
 
     @Override
-    public String toString(){
+    public String toString() {
         Node curHead = head;
         StringBuilder rez = new StringBuilder();
         while (curHead.data != null){
@@ -176,28 +176,28 @@ public class ImmutableLinkedList{
         return rez.toString();
     }//повертає рядок, де через кому відображаютсься елементи колекції
 
-    public Node getHead(){
+    public Node getHead() {
         return this.head;
     }
 
-    public Node getTail(){
+    public Node getTail() {
         return this.tail;
     }
 
-    public Node getTailThroughHead(Node curNode){
-        while (curNode.data != null){
+    public Node getTailThroughHead(Node curNode) {
+        while (curNode.data != null) {
             curNode = curNode.next;
         }
         return curNode;
     }
 
-    public ImmutableLinkedList addFirst(Object e){
+    public ImmutableLinkedList addFirst(Object e) {
         Node nodeToAdd = new Node(e, this.head);
 
         return new ImmutableLinkedList(nodeToAdd);
     } // додає елемент у початок зв'язаного списку
 
-    public ImmutableLinkedList addLast(Object e){
+    public ImmutableLinkedList addLast(Object e) {
 
         Node curTail = this.getTailThroughHead(this.head);
         curTail.data = e;
@@ -207,21 +207,21 @@ public class ImmutableLinkedList{
         return new ImmutableLinkedList(curHead);
     } // додає елемент у кінець зв'язаного списку
 //
-    public Object getFirst(){
+    public Object getFirst() {
         return this.head.next.data;
     }
 //
-    public Object getLast(){
+    public Object getLast() {
         Node head = this.head;
 
-        while (head.next.data != null){
+        while (head.next.data != null) {
             head = head.next;
         }
         return head.data;
     }
 //
     public ImmutableLinkedList removeFirst() throws EmptyStackException {
-        if (this.getLenght() == 0){
+        if (this.getLenght() == 0) {
             throw new EmptyStackException();
         }
 
@@ -233,7 +233,7 @@ public class ImmutableLinkedList{
 
     public ImmutableLinkedList removeLast() throws EmptyStackException {
         int lenght = this.getLenght();
-        if (lenght == 0){
+        if (lenght == 0) {
             throw new EmptyStackException();
         }
         Node newHead = new Node(head.data, null);
@@ -241,7 +241,7 @@ public class ImmutableLinkedList{
         Node currIterator = newHead;
         Node currentNode = head;
 
-        for (int i = 0; i < lenght - 2; i++){
+        for (int i = 0; i < lenght - 2; i++) {
             currIterator.next = new Node(currentNode.next.data, null);
             currentNode = currentNode.next;
             currIterator = currIterator.next;
